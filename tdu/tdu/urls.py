@@ -19,7 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('home.urls')),
-    #url(r'^profile/', include('profiles.urls')),
+    url(r'^profile/', include('profiles.urls')),
     url(r'^regist/', include('accounts.urls', namespace="accounts")),
     url(r'^app', include('app.urls', namespace='app')),
 ]
