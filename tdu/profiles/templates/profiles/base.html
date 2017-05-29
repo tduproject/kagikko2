@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Profile</title>
+    </head>
+    <body>
+        <div class="page-header"></div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% if user.is_anonymous %}
+                        <a href="{% url 'accounts:login' %}">ログイン</a>
+                    {% else %}
+                        <a href="{% url 'accounts:logout' %}">ログアウト</a>
+                    {% endif %}
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

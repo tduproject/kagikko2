@@ -1,0 +1,8 @@
+
+
+
+{% for post in posts %}
+
+<a href="{% url 'poll_detail' pk=post.pk %}">{{ post.subname }}</a><br>
+
+{% endfor %}

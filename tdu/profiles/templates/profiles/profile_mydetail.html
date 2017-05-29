@@ -1,0 +1,14 @@
+{% extends 'profiles/base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'profile_edit' %}">編集</a>
+    {% endif %}
+    <h1>Your Profile</h1>
+    <p>名前: {{ post.name }}</p>
+    <p>学年: {{ post.grade }}</p>
+    <p>学系: {{ post.major }}</p>
+    <p>コメント: {{ post.text }}</p>
+
+{% endblock %}
