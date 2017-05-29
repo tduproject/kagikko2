@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views import generic
 from .models import Post, Category
+from polls.models import Poll ,Choice
 
 
 class IndexView(generic.ListView):
@@ -11,6 +12,7 @@ class IndexView(generic.ListView):
 
 
 def csv_import(request):
+    q_array = ['q1','q2','q3']
     form_data = TextIOWrapper(
         request.FILES['csv'].file, encoding='utf-8')
     if form_data:
@@ -20,9 +22,23 @@ def csv_import(request):
             post.title = line[1]
             post.text = line[2]
             post.sub = line[3]
+            mypoll = Poll()
+            mypoll.subname = line[3]
+            mypoll.question1 = "課題の難易度 "
+            mypoll.question2 = "テストの難易度 "
+            mypoll.question3 = "課題の量 "
+
+
+            for q in q_array:
+                mychoice = Choice()
+                mychoice.subname = line[3]
+                mychoice.value = q
+                mychoice.save()
+
             category, _ = Category.objects.get_or_create(name=line[4])
             post.category = category
             post.save()
+            mypoll.save()
 
     return redirect('app:index')
 

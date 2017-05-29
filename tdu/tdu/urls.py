@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^', include('home.urls')),
     url(r'^profile/', include('profiles.urls')),
     url(r'^regist/', include('accounts.urls', namespace="accounts")),
-    url(r'^app', include('app.urls', namespace='app')),
+    url(r'^app/', include('app.urls', namespace='app')),
+    url(r'^polls/', include('polls.urls')),
 ]
