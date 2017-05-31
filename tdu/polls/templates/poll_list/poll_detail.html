@@ -1,4 +1,5 @@
-
+{% extends "poll_list/base.html" %}
+{% block content %}
 
   <form action={% url 'vote'%} method="post" name=myform>
     {% csrf_token %}
@@ -30,3 +31,5 @@
     <br><button type='submit'>送信</button>
     <input type="hidden" name="subname" value= {{ post.subname }}>
 </form>
+
+{% endblock %}

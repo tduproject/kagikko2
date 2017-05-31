@@ -4,7 +4,7 @@ from django.conf.urls import  url
 from polls import views
 
 urlpatterns = [
- url(r'^$', views.poll_list),
+ url(r'^$', views.poll_list, name = 'poll_list'),
 
  url(r'^poll/(?P<pk>[0-9]+)/$', views.poll_detail, name = 'poll_detail'),
   # ex: /polls/5/

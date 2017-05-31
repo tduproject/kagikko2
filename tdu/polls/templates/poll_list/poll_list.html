@@ -1,8 +1,11 @@
+{% extends "poll_list/base.html" %}
+{% block content %}
 
-
-
+<h1>授業一覧</h1>
 {% for post in posts %}
 
 <a href="{% url 'poll_detail' pk=post.pk %}">{{ post.subname }}</a><br>
 
 {% endfor %}
+
+{% endblock %}

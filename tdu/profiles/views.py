@@ -21,7 +21,7 @@ def profile_mydetail(request):
 def profile_edit(request):
     email = request.user.email
     post = UserProfile.objects.get(email = email)
-    
+
     if request.method == "POST":
         form = UserProfileForm(request.POST, instance=post)
         if form.is_valid():

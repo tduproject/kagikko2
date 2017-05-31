@@ -1,3 +1,6 @@
+{% extends "poll_list/base.html" %}
+{% block content %}
+
 <h1>{{ Q1.subname }}</h1>
 
 <h2>Q1:課題の難易度</h2>
@@ -23,3 +26,5 @@
 <p>{{ Q3.normal }}</p>
 <p>hard</p>
 <p>{{ Q3.hard }}</p>
+
+{% endblock %}
