@@ -14,16 +14,15 @@
       </ul>
     {% endif %}
     <div class="page-header">
-      <h1><a href="{% url 'keijiban:list' %}">BulletinBoard</a></h1>
-      <h2><a href="{% url 'keijiban:create' %}">Open Thread</a></h2>
+      <h1><a href="{% url 'keijiban:list' %}">Bulletin Board</a></h1>
     </div>
-    <h2>list pages(Thread Lists)</h2>
+    <h2>講義一覧</h2>
     {% for post in posts %}
         <div>
-            <h3><a href="{% url 'keijiban:index' pk=post.pk %}">{{ post.subject }}
-            </a></h3>
+            <h3><a href="{% url 'keijiban:index' pk=post.pk %}">{{ post.subname }}</a></h3>
         </div>
     {% endfor %}
   </div>
+  <h1><a href="/">Home</a></h1>
 </body>
 </html>
