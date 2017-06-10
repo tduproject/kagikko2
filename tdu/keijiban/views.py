@@ -36,7 +36,7 @@ def index(request,pk):
     """表示・投稿を処理する"""
     posts = get_object_or_404(Poll, pk=pk)
     # 教科名と投稿名者をフォームにあらかじめ登録しておく設定
-    form = PostingForm(initial={'subject':posts.subname})
+    form = PostingForm(initial={'subject':posts.subname , 'name':"@名無しの電大生"})
     if request.method == 'POST':
         # ModelFormもFormもインスタンスを作るタイミングでの使い方は同じ
         form = PostingForm(request.POST or None)
