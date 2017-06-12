@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'profiles',
     'app',
     'polls',
+    'keijiban',
 ]
 
 MIDDLEWARE = [

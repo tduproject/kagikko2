@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^regist/', include('accounts.urls', namespace="accounts")),
     url(r'^app/', include('app.urls', namespace='app')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^keijiban/', include('keijiban.urls', namespace="keijiban")),
+
 ]
