@@ -16,6 +16,9 @@ from profiles.models import UserProfile
 from .forms import (
     RegisterForm,
     LoginForm,
+    ChangePasswordForm,
+    ForgetPasswordForm,
+    PasswordConfirmForm,
 
 )
 
@@ -92,6 +95,43 @@ class CreateCompleteView(generic.TemplateView):
             return super(CreateCompleteView, self).get(request, **kwargs)
         else:
             raise Http404
+
+
+
+def password_reset(request):
+    context = {
+        'post_reset_redirect': reverse_lazy('accounts:password_reset_done'),
+        'template_name': 'accounts/password_reset_form.html',
+        'email_template_name': 'mailtemplate/password_reset/message.txt',
+        'subject_template_name': 'mailtemplate/password_reset/subject.txt',
+        'password_reset_form': ForgetPasswordForm,
+    }
+    return auth_views.password_reset(request, **context)
+
+
+def password_reset_done(request):
+    context = {
+        'template_name': 'accounts/password_reset_done.html',
+    }
+    return auth_views.password_reset_done(request, **context)
+
+
+def password_reset_confirm(request, uidb64, token):
+    context = {
+        'uidb64': uidb64,
+        'token': token,
+        'post_reset_redirect': reverse_lazy('accounts:password_reset_complete'),
+        'template_name': 'accounts/password_reset_confirm.html',
+        'set_password_form': PasswordConfirmForm,
+    }
+    return auth_views.password_reset_confirm(request, **context)
+
+
+def password_reset_complete(request):
+    context = {
+        'template_name': 'accounts/password_reset_complete.html',
+    }
+    return auth_views.password_reset_complete(request, **context)
 
 
 
