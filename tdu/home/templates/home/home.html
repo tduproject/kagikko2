@@ -7,15 +7,32 @@
 
 {% block content %}
 
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
     <h1>掲示板がくるぞい！</h1><br>
-    
     <h5>最新スレッド5件</h5>
-    {% for post in posts_list %}
+    {% for post in pk_list %}
       {% for db_post in db_poll %}
-        {% if post.subject == db_post.subname %}
-          <h8><a href="{% url 'keijiban:index' pk=db_post.pk %}">{{ post.subject }}</h8><br>
+        {% if post == db_post.pk %}
+          <h8><a href="{% url 'keijiban:index' pk=db_post.pk %}">{{ db_post.subname }}</a></h8><br>
         {% endif %}
       {% endfor %}
     {% endfor %}
+    <br>
+
+    <h5>ご意見・ご要望</h5>
+    <form method="POST" class="post-form">
+      {% csrf_token %}
+      <p>名前:{{ form.name }}</p>
+      <p>件名:{{ form.title }}</p>
+      <p>内容:{{ form.message }}</p>
+      <input type="submit" class="btn btn-primary" value="投稿">
+    </form>
 
 {% endblock %}
