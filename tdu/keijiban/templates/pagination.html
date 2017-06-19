@@ -1,6 +1,8 @@
 {# ページネーター #}
-<nav class="col-sm-8">
-  <ul class="pager">
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1">
+  <div align="center">
+  <ul class="pagination-plain">
     {# ページ送りボタン(1) - 新しい投稿を表示する #}
     {% if page.has_previous %}
       <li class="previous">
@@ -18,7 +20,7 @@
     {# ページ送りボタン(2) - 古い投稿を表示する #}
     {% if page.has_next %}
       <li class="next">
-        <a href="?page={{ page.next_page_number }}">Older <span aria-hidden="true">&rarr;</span></a>
+        <a href="?page={{ page.next_page_number }} ">Older <span aria-hidden="true">&rarr;</span></a>
       </li>
     {% else %}
       <li class="next disabled">
@@ -26,4 +28,6 @@
       </li>
     {% endif %}
   </ul>
-</nav>
+  <div>
+</div>
+</div>

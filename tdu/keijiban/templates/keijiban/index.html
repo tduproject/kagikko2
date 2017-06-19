@@ -1,31 +1,27 @@
-<!doctype html>
-<html>
-<head lang="ja">
-  <meta charset="UTF-8">
-  <title>Bulletin Board</title>
-</head>
-<body>
+{% extends 'keijiban/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+  <title>Kagikko Bulletin Board</title>
+{% endblock %}
+
+{% block content %}
   <div class="container">
     {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-      </ul>
+    {% bootstrap_messages messages %}
     {% endif %}
   <div class="page-header">
-    <h1><a href="{% url 'keijiban:list' %}">Bulletin Board</a></h1>
-    <h2>講義名：{{ form.subject.value }}</h2>
+    <h2>講義名:{{ form.subject.value }}</h2>
   </div>
+
   {# 画面上段 - 入力フォームを定義する #}
   <form method="POST" class="post-form">
     {% csrf_token %}
-    投稿者名：{{ form.name }}<br>
-    メッセージ：{{ form.message }}<br>
+    投稿者名:{{ form.name }}<br>
+    メッセージ:{{ form.message }}<br>
     <div style="display:none">
       {{ form.subject }}
     </div>
-    <div class="col-sm-10">
       <div class="form-group">
         <label class="col-sm-2 control-label"><input type="submit" class="btn btn-primary" value="投稿"></label>
       </div>
@@ -36,10 +32,10 @@
   {% include "pagination.html" %}{# ページネーター用のパーツ #}
   <div class="container">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-10">
         {% for posting in page %}
           {% if posting.subject == form.subject.value %}
-          <div class="panel panel-primary">
+          <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">{{ posting.name }} <label class="small">投稿日時：{{ posting.created_at }}</label></h3>
               </div>
@@ -53,7 +49,4 @@
     </div>
   </div>
     {% include "pagination.html" %}{# ページネーター用のパーツ #}
-  </div>
-  <h1><a href="/">Home</a></h1>
-</body>
-</html>
+{% endblock %}

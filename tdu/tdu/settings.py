@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app',
     'polls',
     'keijiban',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
