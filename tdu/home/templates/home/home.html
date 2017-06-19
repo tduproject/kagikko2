@@ -7,18 +7,6 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-=======
-  {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li class="{{ message.tags }}">{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-    <h1>掲示板がくるぞい！</h1><br>
->>>>>>> dev
     <h5>最新スレッド5件</h5>
     {% for post in pk_list %}
       {% for db_post in db_poll %}
