@@ -2,36 +2,35 @@
 
 {% block content %}
 <div class="container">
-  <div class="center">
-    <h1>ログインページ</h1>
+  <div align="center">
+    <h1>ログイン</h1>
   </div>
 
-  <div class="card-group">
-    <div class="card card-outline-primary">
-      <div class="card-block">
-        <form action="{% url 'accounts:login' %}" method="POST">
-  		  {% if form.errors %}
-            <p>メールアドレスまたは、パスワードが間違っています</p>
-            {% endif %}
-	    　　{{ form.username }}
-	    　　{{ form.password }}
-	  　　  {% csrf_token %}
-	  	  <input type="hidden" name="next" value="{{ next }}" />
-	  　　  <button type="submit" class="btn btn-lg btn-block btn-outline-primary">
-	        ログイン
-	      </button>
-	    </form>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="card-group">
+        <div class="card card-outline-primary">
+          <div class="card-block">
+            <form action="{% url 'accounts:login' %}" method="POST">
+              <div class="form-group">
+      		      <p>{{ form.non_field_errors }}</p>
+	    　      　   {{ form.username }}
+	         　 　   {{ form.password }}
+	  　　           {% csrf_token %}
+	  	          <input type="hidden" name="next" value="{{ next }}" />
+                <button type="submit" class="btn btn-primary btn-lg btn-block">ログイン</button>
+              </div>
+	          </form>
+          </div>
+        </div>
+        <div class="card card-outline-primary">
+          <div class="card-block">
+          <a href="{% url 'accounts:create' %}" class="btn btn-default btn-lg btn-block">会員登録</a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card card-outline-primary">
-      <div class="card-block">
-        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'accounts:create' %}">
-          会員登録
-        </a>
-      </div>
-    </div>
+  </div>
+ </div>
 
-  </div><!-- /.card-group -->
-　　
-</div><!-- /.container -->
 {% endblock %}
