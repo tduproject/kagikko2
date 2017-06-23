@@ -7,15 +7,8 @@
 {% block content %}
 
   <div class="container">
-    {% if messages %}
-      <ul class="messages">
-        {% for message in messages %}
-          <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
 
-    <h2>講義一覧</h2>
+    <h2>掲示板一覧</h2>
     {% for post in posts %}
         <div>
             <h4><a href="{% url 'keijiban:index' pk=post.pk %}">{{ post.subname }}</a></h4>

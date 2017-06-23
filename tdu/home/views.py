@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.contrib import messages
 
 from keijiban.models import Posting
 from polls.models import Poll
@@ -49,10 +48,7 @@ def show(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            messages.success(request, '投稿を受付ました。')
-            return redirect('home:show')
-        else:
-            messages.error(request, '入力内容に誤りがあります。')
+            return redirect('home:contact')
 
     contexts = {
         'posts_list': posts_list,
@@ -62,3 +58,6 @@ def show(request):
     }
 
     return render(request,'home/home.html', contexts)
+
+def contact(request):
+    return render(request, 'home/contact.html')
