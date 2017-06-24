@@ -34,16 +34,18 @@
     <div class="row">
       <div class="col-sm-10">
         {% for posting in page %}
-          {% if posting.subject == form.subject.value %}
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">{{ posting.name }} <label class="small">投稿日時：{{ posting.created_at }}</label></h3>
+                <h3 class="panel-title">
+                  No.{{ page.number }}-{{ forloop.revcounter }}
+                  [投稿者名]{{ posting.name }}
+                  <label class="small">投稿日時：{{ posting.created_at }}</label>
+                </h3>
               </div>
               <div class="panel-body">
-                {{ posting.message }}<br>
+                {{ posting.message }}
               </div>
             </div>
-          {% endif %}
         {% endfor %}
       </div>
     </div>

@@ -16,6 +16,8 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 
 from polls.models import Poll
+from profiles.models import UserProfile
+from django.contrib.auth.models import User
 
 def post_list(request):
     posts = Poll.objects.all()
@@ -36,7 +38,15 @@ def index(request,pk):
     """表示・投稿を処理する"""
     posts = get_object_or_404(Poll, pk=pk)
     # 教科名と投稿名者をフォームにあらかじめ登録しておく設定
-    form = PostingForm(initial={'subject':posts.subname , 'name':"@名無しの電大生"})
+    if not request.user.is_authenticated():
+        #ログインされていない場合は投稿者名が@名無しの電大生になる
+        form = PostingForm(initial={'subject':posts.subname , 'name':"@名無しの電大生"})
+    else:
+        #ログインされている場合は投稿者名がプロフィールの名前になる
+        email = request.user.email
+        info_personal = UserProfile.objects.get(email = email)
+        form = PostingForm(initial={'subject':posts.subname , 'name':info_personal.name})
+
     if request.method == 'POST':
         # ModelFormもFormもインスタンスを作るタイミングでの使い方は同じ
         form = PostingForm(request.POST or None)
@@ -50,8 +60,20 @@ def index(request,pk):
             # メッセージフレームワークを使い、処理が失敗したことをユーザーに通知する
             messages.error(request, '入力内容に誤りがあります。')
 
+    #リストを作成し、該当する講義のデータのみ抽出する
+    db_posts = Posting.objects.order_by('-subject')
+    post_list = ["temp"]
+    for temp in db_posts:
+        if temp.subject == posts.subname:
+            post_list.append(temp)
+
+    #リストの表示設定
+    post_list.pop(0)
+    post_list.reverse()
+
     page = _get_page(
-        Posting.objects.order_by('-id'),  # 投稿を新しい順に並び替えて取得する
+        # Posting.objects.order_by('-id'),  # 投稿を新しい順に並び替えて取得する
+        post_list,
         request.GET.get('page')  # GETクエリからページ番号を取得する
     )
     contexts = {
