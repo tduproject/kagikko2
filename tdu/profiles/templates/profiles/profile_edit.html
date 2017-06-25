@@ -10,10 +10,10 @@
     <div align="center">
     <h1>Edit Your Profile</h1></br>
     </div>
-      <form method="POST" class="post-form">
+      <form method="POST" class="post-form"　enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-primary">保存</button>
+        <button type="submit" class="save btn btn-primary" onclick='if(typeof pressed != "undefined"){return false;}pressed=1;'>保存</button>
       </form>
   </div>
 </div>
