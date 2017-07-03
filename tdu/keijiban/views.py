@@ -40,12 +40,18 @@ def index(request,pk):
     # 教科名と投稿名者をフォームにあらかじめ登録しておく設定
     if not request.user.is_authenticated():
         #ログインされていない場合は投稿者名が@名無しの電大生になる
-        form = PostingForm(initial={'subject':posts.subname , 'name':"@名無しの電大生"})
+        form = PostingForm(initial={'subject':posts.subname , 'name':"@名無しの電大生", 'pk_label':-1})
     else:
         #ログインされている場合は投稿者名がプロフィールの名前になる
         email = request.user.email
         info_personal = UserProfile.objects.get(email = email)
-        form = PostingForm(initial={'subject':posts.subname , 'name':info_personal.name})
+        #ユーザプロフィールへのリンク情報を付加
+        link_profile = UserProfile.objects.all()
+        for tmp in link_profile:
+            if tmp.email == email:
+                pk_link = tmp.pk
+
+        form = PostingForm(initial={'subject':posts.subname , 'name':info_personal.name, 'pk_label':pk_link})
 
     if request.method == 'POST':
         # ModelFormもFormもインスタンスを作るタイミングでの使い方は同じ
