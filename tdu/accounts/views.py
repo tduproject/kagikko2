@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+#from myUserModel.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
@@ -12,7 +13,8 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import generic
 from profiles.models import UserProfile
-
+from pprint import pprint
+from django.http import HttpResponse
 from .forms import (
     RegisterForm,
     LoginForm,
@@ -87,7 +89,7 @@ class CreateCompleteView(generic.TemplateView):
             user.is_active = True
             user.save()
             createprofile = UserProfile()
-            createprofile.name = user.first_name
+            createprofile.name = '名無しの電大生'
             createprofile.email = user.email
             createprofile.save()
 

@@ -140,3 +140,9 @@ EMAIL_USE_TLS = True
 #login 処理
 LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
+
+#key
+ENCRYPTED_FIELDS_KEYDIR = '/Users/ibu/kagikko2/tdu/fieldkeys'
+
+#myUserModel
+#AUTH_USER_MODEL = 'myUserModel.User'
