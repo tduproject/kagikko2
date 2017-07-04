@@ -9,7 +9,7 @@ class PostingForm(forms.ModelForm):
 
     class Meta:
         model = Posting
-        fields = ('name','message','subject')
+        fields = ('name','message','subject','pk_label')
         # widgets = {
         #     'name': forms.TextInput(attrs={'size': 40}),
         #     'message': forms.Textarea(attrs={'cols': 80, 'rows': 20})

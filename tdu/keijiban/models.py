@@ -21,6 +21,9 @@ class Posting(models.Model):
         auto_now_add=True,
         verbose_name='登録日時',
     )
+    pk_label = models.IntegerField(
+        null=True,
+    )
 
 class PostingSubject(models.Model):
     subject = models.CharField(
