@@ -1,0 +1,272 @@
+<html>
+<form action={% url 'edit'%} method="post" name=myform>
+  {% csrf_token %}
+
+
+<h1>前期</h1>
+<table border=1>
+ <tr><th>時間\曜日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
+ <tr><td>1</td>
+ <td><select name = "月1"　style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "1" in post.text %}
+   <option  value={{post}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "火1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "火" and post.text == "1" %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "水1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "水" and post.text == "1" %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "木1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "木" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "金1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "金" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "土1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "土" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>2</td>
+   <td><select name = "月2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "火2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "火" and post.text == "2" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "水2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "水" and post.text == "2" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "木2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "木" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "金2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "金" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "土2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "土" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>3</td>
+   <td><select name = "月3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "火3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "火" and post.text == "3" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "水3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "水" and post.text == "3" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "木3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "木" and post.text == "3" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "金3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "金" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "土3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "土" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>4</td>
+   <td><select name = "月4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "4" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "火4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "火" and post.text == "4" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "水4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "水" and post.text == "4" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "木4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "木" and post.text == "4" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "金4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "金" and "4" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "土4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "土" and post.text == "4" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>5</td>
+   <td><select name = "月5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "月" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "火5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "火" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "水5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "水" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "木5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "木" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "金5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "前期" and post.title == "金" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+
+</table>
+
+<h1>後期</h1>
+<table border=1>
+ <tr><th>時間\曜日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
+ <tr><td>1</td>
+ <td><select name = "後期月1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "後期火1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "後期" and post.title == "火" and post.text == "1" %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "後期水1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "後期" and post.title == "水" and post.text == "1" %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "後期木1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "後期" and post.title == "木" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "後期金1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "後期" and post.title == "金" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+ <td><select name = "後期土1" style = "width:165px">
+   <option  value=null>選択してください</option>
+   {% for post in posts %}{% if post.when == "後期" and post.title == "土" and "1" in post.text %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>2</td>
+   <td><select name = "後期月2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期火2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "火" and post.text == "2" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期水2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "水" and post.text == "2" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期木2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "木" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期金2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "金" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期土2" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "土" and "2" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>3</td>
+   <td><select name = "後期月3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期火3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "火" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期水3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "水" and post.text == "3" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期木3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "木" and post.text == "3" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期金3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "金" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期土3" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "土" and "3" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+ <tr><td>4</td>
+   <td><select name = "後期月4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "4" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期火4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "火" and "4" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期水4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "水" and post.text == "4" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期木4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "木" and post.text == "4" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期金4" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "金" and "4" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+
+ <tr><td>5</td>
+   <td><select name = "後期月5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "月" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期火5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "火" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期水5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "水" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期木5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "木" and post.text == "5" %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   <td><select name = "後期金5" style = "width:165px">
+     <option  value=null>選択してください</option>
+     {% for post in posts %}{% if post.when == "後期" and post.title == "金" and "5" in post.text %}
+     <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+
+
+</table>
+<div style="margin-left:1000px">
+<br><button type='submit'>送信</button>
+</div>
+<input type="hidden" name="timetable" value=time>
+</form>
+
+</html>
