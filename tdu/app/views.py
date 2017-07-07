@@ -3,7 +3,7 @@ from io import TextIOWrapper, StringIO
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views import generic
-from .models import Post, Category
+from .models import Post
 from polls.models import Poll ,Choice
 
 
@@ -35,8 +35,9 @@ def csv_import(request):
                 mychoice.value = q
                 mychoice.save()
 
-            category, _ = Category.objects.get_or_create(name=line[4])
-            post.category = category
+            # category, _ = Category.objects.get_or_create(name=line[4])
+            post.category = line[4]
+            post.when = line[5]
             post.save()
             mypoll.save()
 
@@ -47,7 +48,7 @@ def csv_export(request):
     memory_file = StringIO()
     writer = csv.writer(memory_file)
     for post in Post.objects.all():
-        row = [post.pk, post.title, post.text, post.sub, post.category.name]
+        row = [post.pk, post.title, post.text, post.sub, post.category,post.when]
         writer.writerow(row)
     response = HttpResponse(
         memory_file.getvalue(), content_type='text/csv')
