@@ -21,6 +21,7 @@
         <th>時間</th>
         <th>科目名</th>
         <th>カテゴリ</th>
+        <th>時期</th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +31,8 @@
         <td>{{ post.title }}</td>
         <td>{{ post.text }}</td>
         <td>{{ post.sub }}</td>
-        <td>{{ post.category.name }}</td>
+        <td>{{ post.category }}</td>
+        <td>{{ post.when }}</td>
       </tr>
       {% endfor %}
     </tbody>
