@@ -28,6 +28,9 @@
       </div>
     </div>
   </form>
+  <div align="right">
+    <a href="{% url 'poll_detail' pk=posts.pk %}">[講義の評価・投票はこちら]</a>
+  </div>
   <hr>
   {# 画面下段 - 投稿内容とページネーター用のパーツを表示する #}
   {% include "pagination.html" %}{# ページネーター用のパーツ #}
