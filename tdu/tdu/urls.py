@@ -18,9 +18,11 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('home.urls')),
+    url(r'^', include('home.urls', namespace='home')),
     url(r'^profile/', include('profiles.urls')),
     url(r'^regist/', include('accounts.urls', namespace="accounts")),
     url(r'^app/', include('app.urls', namespace='app')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^keijiban/', include('keijiban.urls', namespace='keijiban')),
+    url(r'^timetable/', include('timetable.urls', namespace='timetable')), #追加
 ]

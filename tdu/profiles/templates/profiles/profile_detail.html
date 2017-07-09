@@ -1,11 +1,15 @@
-{% extends 'profiles/base.html' %}
+{% extends "profiles/base.html" %}
+
+{% block title %}
+    <title>Kagikko {{ post.name }} Profile</title>
+{% endblock %}
 
 {% block content %}
-
-    <h1>Your Profile</h1>
-    <p>名前: {{ post.name }}</p>
-    <p>学年: {{ post.grade }}</p>
-    <p>学系: {{ post.major }}</p>
-    <p>コメント: {{ post.text }}</p>
-
+  <div align="center">
+    <h1>Profile</h1><br/>
+    <h3>{{ post.name }}</h3><br/>
+    <h4>学年　{{ post.grade }}　　学系　{{ post.major }}</h4><br/>
+    <h4>コメント</h4>
+    <p>{{ post.text }}</p>
+  </div>
 {% endblock %}

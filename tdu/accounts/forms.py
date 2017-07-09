@@ -1,8 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.http import HttpResponse
+from pprint import pprint
 
 class RegisterForm(UserCreationForm):
 
@@ -11,7 +13,7 @@ class RegisterForm(UserCreationForm):
     #今回はfirst_name をユーザーネームとして扱う
     #username = email　アドレスと考える
     #required = Trueで登録時必須にする
-    first_name = forms.CharField(label="ユーザーネーム", required=True)
+   # first_name = forms.CharField(label="ユーザーネーム", required=True)
 
     class Meta:
         model = User
@@ -27,8 +29,8 @@ class RegisterForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['username'].widget.attrs['placeholder'] = 'メールアドレス'
 
-        self.fields['first_name'].widget.attrs['class'] = 'form-control'
-        self.fields['first_name'].widget.attrs['placeholder'] = 'ユーザーネーム'
+        # self.fields['first_name'].widget.attrs['class'] = 'form-control'
+        # self.fields['first_name'].widget.attrs['placeholder'] = 'ユーザーネーム'
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'パスワード'
@@ -65,6 +67,15 @@ class LoginForm(AuthenticationForm):
     #ログインフォーム作成
     #username = email と考える
 
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['username'].widget.attrs['class'] = 'form-control'
+    #     self.fields['username'].widget.attrs['placeholder'] = 'メールアドレス'
+    #
+    #     self.fields['password'].widget.attrs['class'] = 'form-control'
+    #     self.fields['password'].widget.attrs['placeholder'] = 'パスワード'
+
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
@@ -72,3 +83,27 @@ class LoginForm(AuthenticationForm):
 
         self.fields['password'].widget.attrs['class'] = 'form-control'
         self.fields['password'].widget.attrs['placeholder'] = 'パスワード'
+
+
+class ForgetPasswordForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs['class'] = 'form-control'
+        self.fields['email'].widget.attrs['placeholder'] = 'メールアドレス'
+
+
+class ChangePasswordForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['new_password1'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password2'].widget.attrs['class'] = 'form-control'
+        self.fields['old_password'].widget.attrs['class'] = 'form-control'
+
+
+class PasswordConfirmForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['new_password1'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password1'].widget.attrs['placeholder'] = '新パスワード'
+        self.fields['new_password2'].widget.attrs['class'] = 'form-control'
+        self.fields['new_password2'].widget.attrs['placeholder'] = '新パスワード（確認）'

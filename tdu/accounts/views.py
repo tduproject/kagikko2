@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+#from myUserModel.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
@@ -12,10 +13,14 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import generic
 from profiles.models import UserProfile
-
+from pprint import pprint
+from django.http import HttpResponse
 from .forms import (
     RegisterForm,
     LoginForm,
+    ChangePasswordForm,
+    ForgetPasswordForm,
+    PasswordConfirmForm,
 
 )
 
@@ -84,7 +89,7 @@ class CreateCompleteView(generic.TemplateView):
             user.is_active = True
             user.save()
             createprofile = UserProfile()
-            createprofile.name = user.first_name
+            createprofile.name = '名無しの電大生'
             createprofile.email = user.email
             createprofile.save()
 
@@ -92,6 +97,43 @@ class CreateCompleteView(generic.TemplateView):
             return super(CreateCompleteView, self).get(request, **kwargs)
         else:
             raise Http404
+
+
+
+def password_reset(request):
+    context = {
+        'post_reset_redirect': reverse_lazy('accounts:password_reset_done'),
+        'template_name': 'accounts/password_reset_form.html',
+        'email_template_name': 'mailtemplate/password_reset/message.txt',
+        'subject_template_name': 'mailtemplate/password_reset/subject.txt',
+        'password_reset_form': ForgetPasswordForm,
+    }
+    return auth_views.password_reset(request, **context)
+
+
+def password_reset_done(request):
+    context = {
+        'template_name': 'accounts/password_reset_done.html',
+    }
+    return auth_views.password_reset_done(request, **context)
+
+
+def password_reset_confirm(request, uidb64, token):
+    context = {
+        'uidb64': uidb64,
+        'token': token,
+        'post_reset_redirect': reverse_lazy('accounts:password_reset_complete'),
+        'template_name': 'accounts/password_reset_confirm.html',
+        'set_password_form': PasswordConfirmForm,
+    }
+    return auth_views.password_reset_confirm(request, **context)
+
+
+def password_reset_complete(request):
+    context = {
+        'template_name': 'accounts/password_reset_complete.html',
+    }
+    return auth_views.password_reset_complete(request, **context)
 
 
 

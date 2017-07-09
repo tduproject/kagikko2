@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'profiles',
     'app',
     'polls',
+    'keijiban',
+    'bootstrap3',
+    'timetable',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'tdu.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #中身追加
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,14 +130,20 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-
-#email
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'kagikko1234@gmail.com'
-EMAIL_HOST_PASSWORD = '098f6bcd4621d373cade4e832627b4f6'
+EMAIL_HOST_PASSWORD = '098f6bcd4621d373cade4e832627b4f2'
 EMAIL_USE_TLS = True
+
+
 
 #login 処理
 LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
+
+#key
+ENCRYPTED_FIELDS_KEYDIR = '/Users/yuno/django05/kagikko2/tdu/fieldkeys'
+
+#myUserModel
+#AUTH_USER_MODEL = 'myUserModel.User'
