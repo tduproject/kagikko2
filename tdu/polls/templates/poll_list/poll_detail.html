@@ -3,8 +3,8 @@
 
   <form action={% url 'vote'%} method="post" name=myform>
     {% csrf_token %}
-    {{ post.subname }}<br>
-    <br>Q1: {{ post.question1 }}<br>
+    <h1>{{ post.subname }}</h1><br>
+    <h4>Q1: {{ post.question1 }}</h4>
     <br>
     <select name = "select1">
     <option  value="e1">easy</option>
@@ -12,7 +12,7 @@
     <option  value="h1">hard</option>
     </select>
     <br>
-    <br>Q2: {{ post.question2 }}<br>
+    <h4>Q2: {{ post.question2 }}</h4>
     <br>
     <select name = "select2">
     <option  value="e2">easy</option>
@@ -20,7 +20,7 @@
     <option  value="h2">hard</option>
     </select>
     <br>
-    <br>Q3: {{ post.question3 }}<br>
+    <h4>Q3: {{ post.question3 }}</h4>
     <br>
     <select name = "select3">
     <option  value="e3">easy</option>
@@ -28,7 +28,7 @@
     <option  value="h3">hard</option>
     </select>
     <br>
-    <br><button type='submit'>送信</button>
+    <br><button type='submit' class="btn btn-primary">送信</button>
     <input type="hidden" name="subname" value= {{ post.subname }}>
 </form>
 

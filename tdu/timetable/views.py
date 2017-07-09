@@ -26,24 +26,55 @@ def time_table2(request):
     days = ["月","火","水","木","金"]
     times = ["1","2","3","4","5"]
     tuti = ["土1","土2","土3","土4"]
+
+    #検索するリストを作成
     for day in days:
         for time in times:
             data = day + time
             listnames.append(data)
-    for elemnt in tuti:
-        listnames.append(elemnt)
+    for element in tuti:
+        listnames.append(element)
 
+    #listnamesで作られた、リストを用いて、request.Postで送信されたデータを保存
+    #何も選択されていない場合、保存しない
+
+    #現在保存されている時間割を、検索
+    user_timetable1 = Timetable1.objects.filter(username = username)
     for day2 in listnames:
+        week = day2[0]
+        num = day2[1]
         mytime = Timetable1()
-        t1 = request.POST[day2]
-        if t1 == request.POST[day2] :
-            if(t1 != 'null') :
-                mytime.username = username
-                mytime.day = day2[0]
-                mytime.time = day2[1]
-                mytime.sub = t1
-                mytime.when = "前期"
-                mytime.save()
+        if user_timetable1.count() == 0:
+            t1 = request.POST[day2]
+            if t1 == request.POST[day2]:
+                if t1 != 'null':
+                    mytime.username = username
+                    mytime.day = day2[0]
+                    mytime.time = day2[1]
+                    mytime.sub = t1
+                    mytime.when = "前期"
+                    mytime.save()
+        else:
+            t1 = request.POST[day2]
+            if t1 == request.POST[day2]:
+                if t1 != 'null':
+                    for timetable in user_timetable1:
+                        if timetable.day == week  and timetable.time == num:
+                            print(timetable.sub)
+                            timetable.delete()
+                            mytime.username = username
+                            mytime.day = day2[0]
+                            mytime.time = day2[1]
+                            mytime.sub = t1
+                            mytime.when = "前期"
+                            mytime.save()
+                        else:
+                            mytime.username = username
+                            mytime.day = day2[0]
+                            mytime.time = day2[1]
+                            mytime.sub = t1
+                            mytime.when = "前期"
+                            mytime.save()
 
     listnames2 = list()
     tuti2 = ["後期土1","後期土2","後期土3"]
@@ -54,18 +85,43 @@ def time_table2(request):
     for elemnt2 in tuti2:
         listnames2.append(elemnt2)
 
-    for day3 in listnames2:
-        mytime2 = Timetable2()
-        t2 = request.POST[day3]
-        if t2 == request.POST[day3] :
-            if(t2 != 'null') :
-                mytime2.username = username
-                mytime2.day = day3[2]
-                mytime2.time = day3[3]
-                mytime2.sub = t2
-                mytime2.when = "後期"
-                mytime2.save()
 
+    user_timetable2 = Timetable2.objects.filter(username=username)
+    for day2 in listnames2:
+        week = day2[2]
+        num = day2[3]
+        mytime = Timetable2()
+        if user_timetable2.count() == 0:
+            t1 = request.POST[day2]
+            if t1 == request.POST[day2]:
+                if t1 != 'null':
+                    mytime.username = username
+                    mytime.day = day2[2]
+                    mytime.time = day2[3]
+                    mytime.sub = t1
+                    mytime.when = "後期"
+                    mytime.save()
+        else:
+            t1 = request.POST[day2]
+            if t1 == request.POST[day2]:
+                if t1 != 'null':
+                    for timetable in user_timetable2:
+                        if timetable.day == week and timetable.time == num:
+                            timetable.delete()
+                            mytime.username = username
+                            mytime.day = day2[2]
+                            mytime.time = day2[3]
+                            mytime.sub = t1
+                            mytime.when = "後期"
+                            mytime.save()
+
+                        else:
+                            mytime.username = username
+                            mytime.day = day2[2]
+                            mytime.time = day2[3]
+                            mytime.sub = t1
+                            mytime.when = "後期"
+                            mytime.save()
     return HttpResponseRedirect('/timetable/result')
 
 def show(request):

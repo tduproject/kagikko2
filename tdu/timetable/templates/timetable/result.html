@@ -1,129 +1,151 @@
-<html>
+{% extends "timetable/base.html" %}
 
-<h1>前期</h1>
-<table border=1>
- <tr><th>時間\曜日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
- <tr><td>1</td>
- <td>
+{% block title %}
+    <title>Kagikko Time Table</title>
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+.table th {
+  background-color: #1ABC9C;
+  color: #ECF0F1;
+}
+th.week {
+  text-align: center;
+}
+td.time{
+  text-align: center;
+}
+</style>
+
+<html>
+<h2>前期</h2>
+<table class="table" border=1>
+
+<tr><th>　　</th><th class="week">月曜日</th><th class="week">火曜日</th><th class="week">水曜日</th><th class="week">木曜日</th><th class="week">金曜日</th><th class="week">土曜日</th></tr>
+ <tr><td class="time">1</td>
+ <td width="200">
    {% for post in post1 %}
    {% if post.when == "前期" and post.day == "月" and "1" in post.time %}
    {{post.sub}}{% endif %}{% endfor %}</td>
- <td>
+ <td width="200">
    {% for post in post1 %}
    {% if post.when == "前期" and post.day == "火" and "1" in post.time %}
    {{post.sub}}{% endif %}{% endfor %}</td>
- <td>
+ <td width="200">
    {% for post in post1 %}
    {% if post.when == "前期" and post.day == "水" and "1" in post.time %}
    {{post.sub}}{% endif %}{% endfor %}</td>
- <td>
+ <td width="200">
    {% for post in post1 %}
    {% if post.when == "前期" and post.day == "木" and "1" in post.time %}
    {{post.sub}}{% endif %}{% endfor %}</td>
- <td>
+ <td width="200">
    {% for post in post1 %}
    {% if post.when == "前期" and post.day == "金" and "1" in post.time %}
    {{post.sub}}{% endif %}{% endfor %}</td>
- <td>
+ <td width="200">
    {% for post in post1 %}
    {% if post.when == "前期" and post.day == "土" and "1" in post.time %}
    {{post.sub}}{% endif %}{% endfor %}</td>
- <tr><td>2</td>
-   <td>
+
+ <tr><td class="time">2</td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "月" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "火" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "水" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "木" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "金" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "土" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
- <tr><td>3</td>
-   <td>
+ <tr><td class="time">3</td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "月" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "火" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "水" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "木" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "金" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "土" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
- <tr><td>4</td>
-   <td>
+ <tr><td class="time">4</td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "月" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "火" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "水" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "木" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "金" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "土" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
- <tr><td>5</td>
-   <td>
+ <tr><td class="time">5</td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "月" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "火" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "水" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "木" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post1 %}
      {% if post.when == "前期" and post.day == "金" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
@@ -131,134 +153,138 @@
 
 </table>
 
-<h1>後期</h1>
-<table border=1>
- <tr><th>時間\曜日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
- <tr><td>1</td>
-   <td>
+
+<h2>後期</h2>
+<table class="table" border=1>
+<tr><th>　　</th><th class="week">月曜日</th><th class="week">火曜日</th><th class="week">水曜日</th><th class="week">木曜日</th><th class="week">金曜日</th><th class="week">土曜日</th></tr>
+ <tr><td class="time">1</td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "月" and "1" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "火" and "1" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "水" and "1" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "木" and "1" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "金" and "1" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "土" and "1" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
 
- <tr><td>2</td>
-   <td>
+ <tr><td class="time">2</td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "月" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "火" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "水" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "木" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "金" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "土" and "2" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
- <tr><td>3</td>
-   <td>
+ <tr><td class="time">3</td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "月" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "火" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "水" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "木" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "金" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "土" and "3" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
- <tr><td>4</td>
-   <td>
+ <tr><td class="time">4</td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "月" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "火" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "水" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "木" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "金" and "4" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
 
- <tr><td>5</td>
-   <td>
+ <tr><td class="time">5</td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "月" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "火" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "水" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "木" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
-   <td>
+   <td width="200">
      {% for post in post2 %}
      {% if post.when == "後期" and post.day == "金" and "5" in post.time %}
      {{post.sub}}{% endif %}{% endfor %}</td>
 
-
 </table>
 
+<div align="right">
+    <a href="{% url 'timetable:table' %}" class="btn btn-primary">編集</a>
+</div>
 </html>
+{% endblock %}

@@ -143,7 +143,7 @@ LOGIN_URL = 'accounts/login'
 LOGIN_REDIRECT_URL = '/'
 
 #key
-ENCRYPTED_FIELDS_KEYDIR = '/Users/yuto/kagikko2/tdu/fieldkeys'
+ENCRYPTED_FIELDS_KEYDIR = '/Users/yuno/django05/kagikko2/tdu/fieldkeys'
 
 #myUserModel
 #AUTH_USER_MODEL = 'myUserModel.User'
