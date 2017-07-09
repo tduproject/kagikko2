@@ -1,16 +1,41 @@
+{% extends "timetable/base.html" %}
+
+{% block title %}
+    <title>Kagikko Time Table</title>
+{% endblock %}
+
+
+{% block content %}
+
+<style type="text/css">
+.table th {
+  background-color: #1ABC9C;
+  color: #ECF0F1;
+}
+th.week {
+  text-align: center;
+}
+td.time{
+  text-align: center;
+}
+</style>
+
+
 <html>
-<form action={% url 'edit'%} method="post" name=myform>
+<form action={% url 'timetable:edit'%} method="post" name=myform>
   {% csrf_token %}
 
 
-<h1>前期</h1>
-<table border=1>
- <tr><th>時間\曜日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
- <tr><td>1</td>
- <td><select name = "月1"　style = "width:165px">
+<h2>前期</h2>
+
+
+<table class="table" border=1>
+ <tr><th>　　</th><th class="week">月曜日</th><th class="week">火曜日</th><th class="week">水曜日</th><th class="week">木曜日</th><th class="week">金曜日</th><th class="week">土曜日</th></tr>
+ <tr><td class="time">1</td>
+ <td><select name = "月1" style = "width:165px">
    <option  value=null>選択してください</option>
-   {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "1" in post.text %}
-   <option  value={{post}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
+   {% for post in posts %}{% if post.when == "前期" and post.title == "月" and post.text == "1" %}
+   <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
  <td><select name = "火1" style = "width:165px">
    <option  value=null>選択してください</option>
    {% for post in posts %}{% if post.when == "前期" and post.title == "火" and post.text == "1" %}
@@ -32,7 +57,7 @@
    {% for post in posts %}{% if post.when == "前期" and post.title == "土" and "1" in post.text %}
    <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>2</td>
+ <tr><td class="time">2</td>
    <td><select name = "月2" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "2" in post.text %}
@@ -58,7 +83,7 @@
      {% for post in posts %}{% if post.when == "前期" and post.title == "土" and "2" in post.text %}
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>3</td>
+ <tr><td class="time">3</td>
    <td><select name = "月3" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "3" in post.text %}
@@ -84,7 +109,7 @@
      {% for post in posts %}{% if post.when == "前期" and post.title == "土" and "3" in post.text %}
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>4</td>
+ <tr><td class="time">4</td>
    <td><select name = "月4" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "前期" and post.title == "月" and "4" in post.text %}
@@ -110,7 +135,7 @@
      {% for post in posts %}{% if post.when == "前期" and post.title == "土" and post.text == "4" %}
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>5</td>
+ <tr><td class="time">5</td>
    <td><select name = "月5" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "前期" and post.title == "月" and post.text == "5" %}
@@ -132,13 +157,13 @@
      {% for post in posts %}{% if post.when == "前期" and post.title == "金" and post.text == "5" %}
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
+</table></br>
 
-</table>
 
-<h1>後期</h1>
-<table border=1>
- <tr><th>時間\曜日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr>
- <tr><td>1</td>
+<h2>後期</h2>
+<table class="table" border=1>
+<tr><th>　　</th><th class="week">月曜日</th><th class="week">火曜日</th><th class="week">水曜日</th><th class="week">木曜日</th><th class="week">金曜日</th><th class="week">土曜日</th></tr>
+<tr><td class="time">1</td>
  <td><select name = "後期月1" style = "width:165px">
    <option  value=null>選択してください</option>
    {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "1" in post.text %}
@@ -164,7 +189,7 @@
    {% for post in posts %}{% if post.when == "後期" and post.title == "土" and "1" in post.text %}
    <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>2</td>
+ <tr><td class="time">2</td>
    <td><select name = "後期月2" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "2" in post.text %}
@@ -190,7 +215,7 @@
      {% for post in posts %}{% if post.when == "後期" and post.title == "土" and "2" in post.text %}
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>3</td>
+ <tr><td class="time">3</td>
    <td><select name = "後期月3" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "3" in post.text %}
@@ -216,7 +241,7 @@
      {% for post in posts %}{% if post.when == "後期" and post.title == "土" and "3" in post.text %}
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
- <tr><td>4</td>
+ <tr><td class="time">4</td>
    <td><select name = "後期月4" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "後期" and post.title == "月" and "4" in post.text %}
@@ -239,7 +264,7 @@
      <option  value={{post.sub}}>{{post.sub}}</option>{% endif %}{% endfor %}</select></td>
 
 
- <tr><td>5</td>
+ <tr><td class="time">5</td>
    <td><select name = "後期月5" style = "width:165px">
      <option  value=null>選択してください</option>
      {% for post in posts %}{% if post.when == "後期" and post.title == "月" and post.text == "5" %}
@@ -264,9 +289,10 @@
 
 </table>
 <div style="margin-left:1000px">
-<br><button type='submit'>送信</button>
+<br><button type='submit' class="btn btn-primary">保存</button>
 </div>
 <input type="hidden" name="timetable" value=time>
 </form>
 
 </html>
+{% endblock %}

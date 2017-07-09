@@ -11,7 +11,7 @@
     <h2>掲示板一覧</h2>
     {% for post in posts %}
         <div>
-            <h4><a href="{% url 'keijiban:index' pk=post.pk %}">{{ post.subname }}</a></h4>
+            <a href="{% url 'keijiban:index' pk=post.pk %}">{{ post.subname }}</a>
         </div>
     {% endfor %}
   </div>

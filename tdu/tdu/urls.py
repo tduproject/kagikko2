@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^keijiban/', include('keijiban.urls', namespace='keijiban')),
     url(r'^timetable/', include('timetable.urls')),
+    url(r'^timetable/', include('timetable.urls', namespace='timetable'))
 ]

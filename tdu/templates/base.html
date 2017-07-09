@@ -32,8 +32,9 @@
       <ul class="nav navbar-nav">
         <li class="{% block nav_profiles %}{% endblock %}"><a href="{% url 'profile_mydetail' %}">プロフィール</a></li>
         <li class="{% block nav_keijiban %}{% endblock %}"><a href="{% url 'keijiban:list' %}">掲示板</a></li>
-        <!--時間割できたらbase active作成-->
-        <li class="{% block nav_time %}{% endblock %}"><a href="#fakelink">時間割</a></li>
+        <li class="{% block nav_timetable %}{% endblock %}"><a href="{% url 'timetable:result' %}">時間割</a></li>
+        <li class="{% block nav_poll %}{% endblock %}"><a href="{% url 'poll_list' %}">授業評価</a></li>
+
       </ul>
       <!--on logout-->
       <ul class="nav navbar-nav navbar-right">
