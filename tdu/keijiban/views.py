@@ -56,12 +56,20 @@ def index(request,pk):
     if request.method == 'POST':
         # ModelFormもFormもインスタンスを作るタイミングでの使い方は同じ
         form = PostingForm(request.POST or None)
+        # 検証を行うためにrequest.POSTからpk_labelのデータをとってくる
+        pk_input = request.POST["pk_label"]
+        # pk_linkはint型なのでstr型に変換し,formデータのpk_labelと同じ値かどうかを確認
+        pk_check = str(pk_link)
         if form.is_valid():
-            # save()メソッドを呼ぶだけでModelを使ってDBに登録される。
-            form.save()
-            # メッセージフレームワークを使い、処理が成功したことをユーザーに通知する
-            messages.success(request, '投稿を受付ました。')
-            return redirect('keijiban:index',pk=pk)
+            if pk_input == pk_check:
+                # save()メソッドを呼ぶだけでModelを使ってDBに登録される。
+                form.save()
+                # メッセージフレームワークを使い、処理が成功したことをユーザーに通知する
+                messages.success(request, '投稿を受付ました。')
+                return redirect('keijiban:index',pk=pk)
+            else:
+                #異なるユーザーになりすましを行おうとした際には警告文を出す
+                messages.error(request, '不正な入力操作を検知しました。')
         else:
             # メッセージフレームワークを使い、処理が失敗したことをユーザーに通知する
             messages.error(request, '入力内容に誤りがあります。')
