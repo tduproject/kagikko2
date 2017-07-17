@@ -23,11 +23,21 @@ def profile_edit(request):
     post = UserProfile.objects.get(email = email)
     if request.method == "POST":
 
+        #選択された文字が正しいか検証
+        for maj in ['RB', 'RD', 'RG', 'RT', 'RU']:
+            if maj == request.POST["major"]:
+                post.major = request.POST["major"]
+
+        for gra in ['1年', '2年', '3年', '4年', '院1年', '院2年', '教員']:
+            if gra == request.POST["grade"]:
+                post.grade = request.POST["grade"]
+
+
         #form = UserProfileForm(request.POST, instance=post)
         post.name = request.POST["name"]
         post.text = request.POST["text"]
-        post.major = request.POST["major"]
-        post.grade = request.POST["grade"]
+        #post.major = request.POST["major"]
+        #post.grade = request.POST["grade"] #受け取ったのがPOST　
         post.save()
         # if form.is_valid():
         #     post = form.save(commit=False)
